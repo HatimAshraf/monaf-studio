@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValueEvent } from 'framer-motion';
 
 const links = [
   { label: 'Home', href: '/' },
@@ -30,9 +30,47 @@ const menuVariants = {
   },
 };
 
+const navbarVariants = {
+  intial: isHomepage
+    ? {
+        y: -100,
+        opacity: 0,
+      }
+    : {
+        y: 0,
+        opacity: 1,
+      },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.5,
+      delay: isHomepage && !hasScrolled ? 1.8 : 0,
+    },
+  },
+  hidden: {
+    y: -100,
+    opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.3,
+    },
+  },
+};
+
 const Navbar = () => {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHomepage = pathname === '/';
+
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, 'change' (latest) =>{
+    if (!mobileMenuOpen) {
+      const scrollngup = latest < prevScrollY
+    }
+  });
   return (
     <div>
       <div className='container mx-auto p-4 flex justify-between items-center m-4'>
