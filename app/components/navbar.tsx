@@ -88,16 +88,16 @@ const Navbar = () => {
         key='navbar'
         animate={isVisible ? 'visible' : 'hidden'}
         variants={navbarVariants}
-        className='fixed top-0 w-full z-50 px-6 py-2 border-b bg-white md:p-10 '
+        className='fixed top-0 left-0 right-0 z-50 px-6 py-8 border-b bg-white md:p-10 '
       >
-        <div className='container mx-auto flex justify-between items-center m-4'>
-          <Link href={'/'} className='flex items-center-safe space-x-1'>
+        <div className='mx-auto flex justify-between items-center'>
+          <Link href={'/'} className='flex items-center space-x-1'>
             <div className='rounded-full bg-black w-4 h-4' />
             <h1 className='text-xl font-bold'>Monaf Studio</h1>
           </Link>
 
           {/* destop menu */}
-          <div className='hidden md:flex space-x-6'>
+          <div className='hidden md:flex space-x-8'>
             {links.map((link) => (
               <Link
                 href={link.href}
@@ -133,7 +133,7 @@ const Navbar = () => {
           variants={menuVariants}
           className='md:hidden overflow-hidden'
         >
-          <div className='flex flex-col items-start space-y-6 pt-2'>
+          <div className='flex flex-col items-center space-y-4 pt-4'>
             {links.map((link) => (
               <Link
                 href={link.href}
