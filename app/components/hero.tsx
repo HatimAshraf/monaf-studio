@@ -1,6 +1,12 @@
 'use client';
-import { motion, useTransform, useScroll, easeOut } from 'framer-motion';
-import { Link } from 'lucide-react';
+import {
+  motion,
+  useTransform,
+  useScroll,
+  easeOut,
+  easeInOut,
+} from 'framer-motion';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const Hero = () => {
@@ -43,7 +49,7 @@ const Hero = () => {
       filter: 'blur(0px)',
       transition: {
         duration: 0.9,
-        ease: [0.25, 0.1, 0, 1],
+        ease: easeInOut,
         staggerChildren: 0.1,
       },
     },
@@ -61,7 +67,7 @@ const Hero = () => {
       scale: 1,
       transition: {
         duration: 1,
-        ease: [0.25, 0.1, , 0, 1],
+        ease: easeInOut,
         delay: 0.6,
       },
     },
@@ -79,7 +85,7 @@ const Hero = () => {
       transition: {
         delay: 0.8,
         duration: 1.2,
-        ease: [0.25, 0.1, 0, 1],
+        ease: easeInOut,
       },
     },
   };
@@ -112,14 +118,13 @@ const Hero = () => {
 
           <motion.p
             variants={contentVariants}
-            className='text-xl text-[#7b7b7b] mb-8 leading-6'
+            className='text-xl text-[#7b7b7b] mb-8 '
           >
-            At Monaf Studio designs come
-            <br />
-            to life with our great team
+            Where ideas come alive — and your business moves forward.
           </motion.p>
 
-          {/* <motion.div
+          {/* Buttons */}
+          <motion.div
             variants={buttonVariants}
             initial={hasAnimated ? 'visible' : 'hidden'}
             animate='visible'
@@ -133,7 +138,7 @@ const Hero = () => {
               View Our Work
             </Link>
 
-            {/* <motion.a
+            <motion.a
               href='https://meetings.hubspot.com/productizedos/epic-labs?uuid=fca92f30-4111-4445-9498-af335bb840af'
               target='_blank'
               rel='noopener noreferrer'
@@ -142,13 +147,13 @@ const Hero = () => {
                 font-medium hover:bg-red-600 transition-all hover:shadow-lg inline-block'
             >
               Book a meeting
-            </motion.a> 
-          </motion.div> */}
+            </motion.a>
+          </motion.div>
         </div>
       </motion.div>
 
       {/* Video Section */}
-      {/* <motion.div
+      <motion.div
         className='flex justify-center w-full md:px-0'
         initial={hasAnimated ? 'visible' : 'hidden'}
         animate='visible'
@@ -171,7 +176,7 @@ const Hero = () => {
             className='w-full h-full object-cover pointer-events-none'
           />
         </motion.div>
-      </motion.div> */}
+      </motion.div>
     </div>
   );
 };
